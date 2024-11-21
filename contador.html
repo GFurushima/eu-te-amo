@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Tempo</title>
+    <style>
+        body {
+            background-color: #000000; /* fundo preto */
+            color: #FFFFFF; /* texto branco */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .counter {
+            font-size: 2em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        img {
+            width: 300px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .message {
+            font-size: 1.2em;
+            margin-top: 30px;
+            font-style: italic;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #FFFFFF; /* título branco */
+            margin-top: 30px;
+        }
+
+        iframe {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 560px; /* Largura máxima do áudio */
+            height: 352px; /* Altura do player */
+            border: none;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Eu Te Amo!</h1>
+        <div class="images">
+            <!-- Foto hospedada no Imgur com link direto -->
+            <img src="https://i.imgur.com/q1V0yNX.jpeg" alt="Eu e Minha Namorada">
+        </div>
+
+        <div class="counter" id="counter">
+            <!-- Contador será atualizado aqui -->
+        </div>
+
+        <div class="message">
+            <p>Desde que estamos juntos, o tempo ganhou um novo significado. Cada momento ao seu lado parece ser o mais perfeito, e quanto mais vivemos, mais percebo que o que importa não são os números, mas o que sentimos. Não importa se são dias, meses ou anos, cada segundo ao seu lado é um presente, e o melhor de tudo é saber que, com você, o tempo nunca vai ser suficiente.</p>
+        </div>
+
+        <!-- Player de áudio do Spotify -->
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2H4TYG8IkKIXeJFt2CLCaO?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <script>
+        // Data inicial (02/07/2024)
+        const startDate = new Date("2024-07-02T00:00:00");
+
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - startDate; // diferença em milissegundos
+
+            // Calculando o tempo decorrido
+            const seconds = Math.floor(diff / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            const days = Math.floor(hours / 24);
+            const months = Math.floor(days / 30);
+            const years = Math.floor(days / 365);
+
+            // Atualizando o contador no HTML
+            document.getElementById("counter").innerHTML = `
+                <p>Tempo Juntos: ${years} anos, ${months % 12} meses, ${days % 30} dias, ${hours % 24} horas, ${minutes % 60} minutos, ${seconds % 60} segundos</p>
+            `;
+        }
+
+        // Atualizar o contador a cada segundo
+        setInterval(updateCounter, 1000);
+        updateCounter(); // Chama uma vez para inicializar
+    </script>
+</body>
+</html>
